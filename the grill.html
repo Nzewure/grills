@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grill by Delis – premium steakhouse Lagos</title>
+    <!-- Fonts: bold condensed headings + clean sans body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1e1b18;   /* deep charcoal/warm black */
+            color: #f5f0e9;               /* crisp white/light grey */
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(3.2rem, 12vw, 6rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            color: #f5f0e9;
+        }
+
+        h2 span {
+            color: #b85a2c;               /* burnt orange / terracotta accent */
+        }
+
+        .accent-brown {
+            color: #b85a2c;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: #ddd2c5;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #b85a2c;
+            color: #f5f0e9;
+            font-weight: 600;
+            padding: 0.9rem 2.5rem;
+            margin: 0.4rem;
+            border-radius: 0;               /* sharp edges for industrial look */
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .btn-primary {
+            background: #b85a2c;
+            border-color: #b85a2c;
+            color: #1e1b18;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #f5f0e9;
+        }
+
+        .btn:hover {
+            background: #b85a2c;
+            color: #1e1b18;
+        }
+
+        /* container */
+        section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .full {
+            max-width: none;
+            padding: 0;
+        }
+
+        /* header/hero */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.5) saturate(1.2) contrast(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(40,30,20,0.3) 0%, #1a1512 90%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            padding: 0 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            color: #e7d9cc;
+            margin-bottom: 2.5rem;
+        }
+
+        /* branch selector cards */
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .branch-card {
+            background: #2a2521;      /* warm black / leather */
+            border: 1px solid #6b4d3a;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 20px 30px -12px black;
+            transition: 0.3s;
+        }
+
+        .branch-card:hover {
+            border-color: #b85a2c;
+            transform: translateY(-5px);
+        }
+
+        .branch-card h3 {
+            font-size: 2rem;
+            color: #b85a2c;
+            border-bottom: 2px solid #b85a2c;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .branch-card i {
+            color: #b85a2c;
+            width: 28px;
+        }
+
+        .branch-card p {
+            margin: 0.8rem 0;
+        }
+
+        .phone-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-link {
+            color: #25D366;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .small-gallery {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-thumb {
+            width: 70px;
+            height: 70px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #b85a2c;
+        }
+
+        /* menu grid (industrial) */
+        .menu-section {
+            background: #26211d;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #b85a2c;
+        }
+
+        .menu-category {
+            margin: 2.5rem 0;
+        }
+
+        .menu-category h3 {
+            font-size: 2.2rem;
+            color: #b85a2c;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px dashed #6b4d3a;
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .menu-item {
+            background: #1e1b18;
+            padding: 1.5rem;
+            border: 1px solid #4a3c32;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item .item-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #f5f0e9;
+        }
+
+        .menu-item .item-desc {
+            font-size: 0.9rem;
+            color: #b6aa9a;
+            margin: 0.5rem 0;
+        }
+
+        .menu-item .price {
+            color: #b85a2c;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* reviews */
+        .review-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1.5rem 0.5rem;
+            scrollbar-color: #b85a2c #2f2a25;
+        }
+
+        .review-card {
+            min-width: 300px;
+            background: #2f2924;
+            padding: 2rem;
+            border-left: 4px solid #b85a2c;
+        }
+
+        .review-card p {
+            font-style: italic;
+            color: #ddd2c5;
+        }
+
+        .reviewer {
+            margin-top: 1rem;
+            color: #b85a2c;
+            font-weight: 600;
+        }
+
+        /* reservation form */
+        .reserve-form {
+            background: #2f2924;
+            border: 1px solid #b85a2c40;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reserve-form input, .reserve-form select, .reserve-form textarea {
+            background: #1e1b18;
+            border: 1px solid #6b4d3a;
+            padding: 1rem 1.5rem;
+            color: #f5f0e9;
+            width: 100%;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .reserve-form input:focus, .reserve-form select:focus {
+            border-color: #b85a2c;
+            outline: none;
+        }
+
+        .half {
+            flex: 1 1 200px;
+        }
+
+        /* map placeholder */
+        .map-block {
+            background: #2a2521;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: 1px solid #6b4d3a;
+            margin: 2rem 0;
+        }
+
+        .map-block i {
+            font-size: 4rem;
+            color: #b85a2c;
+        }
+
+        /* footer */
+        footer {
+            background: #14110f;
+            padding: 3.5rem 2rem;
+            border-top: 3px solid #b85a2c;
+        }
+
+        .footer-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .footer-flex a {
+            color: #c9b697;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-flex a:hover {
+            color: #b85a2c;
+        }
+
+        .newsletter input {
+            background: #1e1b18;
+            border: 1px solid #6b4d3a;
+            padding: 0.8rem 1.2rem;
+            color: white;
+        }
+
+        /* floating whatsapp */
+        .wa-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px black;
+            z-index: 99;
+            border: 2px solid white;
+        }
+
+        /* seo friendly */
+        .seo-visibility {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- floating whatsapp (Yaba branch) -->
+<a href="https://wa.me/2348145975572" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i> Chat with us</a>
+
+<!-- Hero Section (full video / carousel effect) -->
+<section class="full hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="https://images.pexels.com/photos/1251208/pexels-photo-1251208.jpeg">
+        <source src="https://videos.pexels.com/video-files/4922955/4922955-sd_640_360_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Fire. Smoke. <span>Perfection.</span></h1>
+        <p>Prime cuts, bold flavours, unforgettable atmosphere. The Grill by Delis — Victoria Island & Yaba.</p>
+        <div>
+            <a href="#reservation" class="btn btn-primary">Reserve a Table</a>
+            <a href="#menu" class="btn">View Our Menu</a>
+            <a href="#order" class="btn">Order Online</a>
+        </div>
+    </div>
+</section>
+
+<!-- About / The Grill by Delis Experience -->
+<section>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div>
+            <h2>More Than Just <span>a Steakhouse.</span></h2>
+            <p style="font-size: 1.3rem; color: #e7d9cc;">The Grill by Delis was born from a passion for live-fire cooking and genuine connections. A casual fine-dining experience where quality meets warmth.</p>
+            <p style="margin-top: 1.5rem;">Whether at our intimate Victoria Island location or vibrant Yaba outpost, expect expertly grilled dishes, a curated drinks list, and an atmosphere that invites you to stay.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="background: url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; height: 300px;"></div>
+            <div style="background: url('https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; height: 300px;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Locations (branch selector / cards) -->
+<section>
+    <h2 style="text-align: center;">Our <span>Locations</span></h2>
+    <div class="branch-grid">
+        <!-- Victoria Island -->
+        <div class="branch-card">
+            <h3>Victoria Island</h3>
+            <p><i class="fas fa-location-dot"></i> 1 Karimu Kotun Street, Victoria Island, Lagos</p>
+            <p class="phone-row"><i class="fas fa-phone"></i> +234 903 888 8881</p>
+            <p class="phone-row"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2348145975572" class="whatsapp-link">Chat VI</a></p>
+            <p><i class="far fa-clock"></i> Mon-Sun: 12PM – 11PM</p>
+            <p><i class="fas fa-directions"></i> <a href="#" style="color:#b85a2c;">Get directions</a></p>
+            <div class="small-gallery">
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            </div>
+        </div>
+        <!-- Yaba Branch -->
+        <div class="branch-card">
+            <h3>Yaba</h3>
+            <p><i class="fas fa-location-dot"></i> 3 Olumo Street, Onike Roundabout, Yaba, Lagos</p>
+            <p class="phone-row"><i class="fas fa-phone"></i> +234 909 999 9722 (general)</p>
+            <p class="phone-row"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2348145975572" class="whatsapp-link">+234 814 597 5572</a></p>
+            <p><i class="far fa-clock"></i> Mon-Sun: 12PM – 11PM</p>
+            <p><i class="fas fa-directions"></i> <a href="#" style="color:#b85a2c;">Get directions</a></p>
+            <div class="small-gallery">
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/8472836/pexels-photo-8472836.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+                <div class="gallery-thumb" style="background-image: url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+            </div>
+        </div>
+    </div>
+    <p style="text-align:center;">General inquiries: +234 909 999 9722</p>
+</section>
+
+<!-- The Menu (digital showcase) -->
+<section id="menu">
+    <h2 style="text-align: center;">Crafted on <span>the Fire</span></h2>
+    <div class="menu-section">
+        <div class="menu-category">
+            <h3>From the Grill (Signature Cuts)</h3>
+            <div class="menu-items">
+                <div class="menu-item"><span class="item-name">Grilled Lamb Chops</span><span class="item-desc">Premium cut, rosemary & garlic</span><span class="price">₦15,500</span></div>
+                <div class="menu-item"><span class="item-name">Ribeye Steak</span><span class="item-desc">300g, aged, grilled to perfection</span><span class="price">₦18,000</span></div>
+                <div class="menu-item"><span class="item-name">Beef Skewers</span><span class="item-desc">Marinated with suya spice</span><span class="price">₦9,500</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Suya</span><span class="item-desc">Grilled with yaji, side of onions</span><span class="price">₦8,500</span></div>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Starters & Sharing</h3>
+            <div class="menu-items">
+                <div class="menu-item"><span class="item-name">Grilled Chicken Wings</span><span class="item-desc">spicy pepper glaze</span><span class="price">₦7,200</span></div>
+                <div class="menu-item"><span class="item-name">Spicy Shrimps</span><span class="item-desc">pan-seared with harissa</span><span class="price">₦9,800</span></div>
+                <div class="menu-item"><span class="item-name">Classic Hummus</span><span class="item-desc">with grilled flatbread</span><span class="price">₦5,500</span></div>
+                <div class="menu-item"><span class="item-name">Beef Samosas</span><span class="item-desc">3 pieces, mint chutney</span><span class="price">₦6,000</span></div>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Handcrafted Burgers</h3>
+            <div class="menu-items">
+                <div class="menu-item"><span class="item-name">The Delis Classic Burger</span><span class="item-desc">beef patty, cheese, caramelized onions</span><span class="price">₦8,500</span></div>
+                <div class="menu-item"><span class="item-name">Grilled Chicken Burger</span><span class="item-desc">with avocado & chipotle</span><span class="price">₦8,000</span></div>
+                <div class="menu-item"><span class="item-name">Steak Sandwich</span><span class="item-desc">sliced ribeye, rocket, parmesan</span><span class="price">₦10,500</span></div>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Sides & Salads</h3>
+            <div class="menu-items">
+                <div class="menu-item"><span class="item-name">Grilled Vegetables</span><span class="price">₦4,500</span></div>
+                <div class="menu-item"><span class="item-name">Spicy Potato Wedges</span><span class="price">₦4,000</span></div>
+                <div class="menu-item"><span class="item-name">House Salad</span><span class="price">₦4,500</span></div>
+            </div>
+        </div>
+        <div class="menu-category">
+            <h3>Drinks & Cocktails</h3>
+            <div class="menu-items">
+                <div class="menu-item"><span class="item-name">Premium Wines (glass)</span><span class="price">₦6,000+</span></div>
+                <div class="menu-item"><span class="item-name">Signature Cocktail (Grill Mule)</span><span class="price">₦7,500</span></div>
+                <div class="menu-item"><span class="item-name">Local & Imported Beers</span><span class="price">₦2,500+</span></div>
+                <div class="menu-item"><span class="item-name">Mocktails / Soft Drinks</span><span class="price">₦3,000</span></div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center;"><a href="#reservation" class="btn">Make a Reservation</a></div>
+</section>
+
+<!-- Guestbook reviews -->
+<section>
+    <h2 style="text-align: center;">What Our <span>Guests Say</span></h2>
+    <div style="text-align: center; margin: 1rem;"><span class="btn" style="background:#b85a2c;">★ 4.2 TripAdvisor (96+ reviews)</span></div>
+    <div class="review-carousel">
+        <div class="review-card"><p>“A great spot in VI for a nice dinner. The food was really good and the service was top notch.”</p><div class="reviewer">— TripAdvisor User</div></div>
+        <div class="review-card"><p>“Finally, a place that understands how to cook a perfect steak. The Yaba branch is my new go-to.”</p><div class="reviewer">— Google Review</div></div>
+        <div class="review-card"><p>“Love the ambiance. It's fine dining without being stuffy. The grilled chicken is a must-try!”</p><div class="reviewer">— Eat.Drink.Lagos</div></div>
+    </div>
+    <div style="display: flex; gap: 2rem; justify-content: center; margin: 2rem;">
+        <i class="fab fa-tripadvisor" style="font-size:2rem; color:#b85a2c;"></i>
+        <i class="fab fa-google" style="font-size:2rem; color:#b85a2c;"></i>
+        <span style="font-weight:600;">Eat.Drink.Lagos</span>
+    </div>
+</section>
+
+<!-- Reservations & Events -->
+<section id="reservation">
+    <h2 style="text-align: center;">Secure <span>Your Table</span></h2>
+    <p class="subhead" style="text-align: center;">Reservations recommended, especially weekends. Private dining available.</p>
+    <div class="reserve-form">
+        <div class="form-row">
+            <input class="half" type="text" placeholder="Full name">
+            <input class="half" type="email" placeholder="Email">
+        </div>
+        <div class="form-row">
+            <select class="half"><option>Victoria Island</option><option>Yaba</option></select>
+            <input class="half" type="date" value="2025-06-20">
+        </div>
+        <div class="form-row">
+            <select class="half"><option>2 guests</option><option>4 guests</option><option>6 guests</option></select>
+            <select class="half"><option>7:00 PM</option><option>8:00 PM</option></select>
+        </div>
+        <textarea rows="2" placeholder="Special requests / private event inquiry"></textarea>
+        <button class="btn btn-primary" style="margin-top: 1.5rem; width:100%;">Request Reservation</button>
+        <p style="text-align:center; margin-top:1rem;"><a href="#" style="color:#b85a2c;">Inquire About Private Dining →</a></p>
+    </div>
+</section>
+
+<!-- Instagram feed / Gallery -->
+<section>
+    <h2 style="text-align: center;">Moments from <span>@thegrillbydelis</span></h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin: 2rem 0;">
+        <div style="width:110px; height:110px; background:url('https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; border:2px solid #b85a2c;"></div>
+        <div style="width:110px; height:110px; background:url('https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; border:2px solid #b85a2c;"></div>
+        <div style="width:110px; height:110px; background:url('https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; border:2px solid #b85a2c;"></div>
+        <div style="width:110px; height:110px; background:url('https://images.pexels.com/photos/8472836/pexels-photo-8472836.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; border:2px solid #b85a2c;"></div>
+        <div style="width:110px; height:110px; background:url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover; border:2px solid #b85a2c;"></div>
+    </div>
+</section>
+
+<!-- Online Ordering -->
+<section id="order">
+    <h2 style="text-align: center;">Enjoy <span>The Grill</span> at Home</h2>
+    <p class="subhead" style="text-align: center;">Order directly for pickup or delivery. Flame‑grilled favourites, curated drinks.</p>
+    <div style="text-align: center;">
+        <a href="#" class="btn btn-primary" style="font-size:1.3rem;">Order Online Now</a>
+    </div>
+</section>
+
+<!-- Map placeholder (location) -->
+<section>
+    <h2 style="text-align: center;">Find <span>us</span></h2>
+    <div class="map-block">
+        <i class="fas fa-map-location-dot"></i>
+        <p style="font-size:1.3rem;">VI: 1 Karimu Kotun St · Yaba: 3 Olumo St, Onike</p>
+        <p><i class="fas fa-phone"></i> +234 909 999 9722</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-flex">
+        <div>
+            <i class="fab fa-instagram" style="color:#b85a2c;"></i> <a href="#">@thegrillbydelis</a> &nbsp; | &nbsp;
+            <i class="fab fa-facebook"></i> <a href="#">/grillbydelis</a>
+        </div>
+        <div class="newsletter">
+            <input type="email" placeholder="Subscribe for updates">
+            <button class="btn" style="padding:0.5rem 1.2rem;">OK</button>
+        </div>
+        <div>
+            <a href="#menu">Menu</a> | <a href="#reservation">Reserve</a> | <a href="#order">Order</a>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">© 2025 The Grill by Delis. All rights reserved. Lagos – VI & Yaba.</div>
+</footer>
+
+<!-- hidden SEO -->
+<div class="seo-visibility">
+    best steakhouse in Lagos, Grill restaurant Victoria Island, Restaurant in Yaba, Lagos fine dining, Grilled lamb chops Lagos, Where to get a good steak in VI, Casual fine dining Lagos, Restaurants on Karimu Kotun, Food places in Onike.
+</div>
+
+<!-- smooth scroll / extra -->
+</body>
+</html>
